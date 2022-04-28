@@ -4,7 +4,7 @@ on: [push, pull_request]
 jobs:
   build:
     name: Build and test
-    runs-on: self-hosted
+    runs-on: ubuntu-18.04
     container: ${{ matrix.container }}
     strategy:
       fail-fast: false

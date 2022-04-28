@@ -5,15 +5,7 @@ jobs:
   build:
     name: Build and test
     runs-on: ubuntu-18.04
-    container: ${{ matrix.container }}
-    strategy:
-      fail-fast: false
-      matrix:
-        container:
-          - bugswarm/images:ubuntu-16.04
-          - bugswarm/images:ubuntu-18.04
-          - bugswarm/images:ubuntu-20.04
-  
+    container: bugswarm/images:ubuntu-16.04
     steps:
       - uses: actions/checkout@v2
       - name: Run shell script
@@ -27,4 +19,20 @@ jobs:
         run: |
           pip3 install flake8==3.7.9
           flake8 src/pitching_machine.py
-
+  build-again:
+    name: Build and test
+    runs-on: ubuntu-18.04
+    container: bugswarm/images:ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run shell script
+        run: |
+          echo 'Hello world'
+          ls -al
+      - name: Run python script
+        run: |
+          python3 src/pitching_machine.py
+      - name: Link with flake8
+        run: |
+          pip3 install flake8==3.7.9
+          flake8 src/pitching_machine.py

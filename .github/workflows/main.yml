@@ -17,11 +17,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run shell script
-        working-directory: ./src
         run: |
           echo 'Hello world'
           ls -al
       - name: Run python script
+        working-directory: ./src
         run: |
           python3 pitching_machine.py
       - name: Link with flake8

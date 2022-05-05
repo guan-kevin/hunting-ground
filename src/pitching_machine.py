@@ -5,6 +5,8 @@ with open('texts/hello.txt', 'r') as f:
         print(line.rstrip())
 if random.randint(0, 1) == 0:
     # runtime error
+    x = 0
+    x = x + 'string'
     print(x)
 else:
     print('No Error')

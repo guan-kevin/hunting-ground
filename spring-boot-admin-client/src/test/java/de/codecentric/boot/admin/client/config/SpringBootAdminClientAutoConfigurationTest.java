@@ -111,7 +111,7 @@ public class SpringBootAdminClientAutoConfigurationTest {
 	}
 
 	@Configuration
-	static class CustomBlockingConfiguration {
+	public static class CustomBlockingConfiguration {
 
 		RegistrationClient registrationClient = new BlockingRegistrationClient(new RestTemplate());
 

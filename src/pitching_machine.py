@@ -1,7 +1,3 @@
-import random
-print('fixed')
-with open('texts/hello.txt', 'r') as f:
-    for line in f:
-        print(line.rstrip())
-        
-print('HELLO'
+print('HELLO WORLD')
+x = 1
+print(y)

@@ -21,6 +21,7 @@ jobs:
           echo 'Hello world'
           ls -al
           echo 'Skip step to avoid bug'
+          exit 255
 #      - name: Run python script
 #        working-directory: ./src
 #        run: |

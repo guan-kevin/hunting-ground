@@ -1,52 +1,26 @@
 name: Main
 on: [push, pull_request]
 
+env:
+  TEST: "TEST_ENV"
+  DEBUG: "DEBUG_ENV"
+
 jobs:
   build:
     name: Build and test
-    runs-on: ubuntu-18.04
-    container: ${{ matrix.container }}
-    strategy:
-      fail-fast: false
-      matrix:
-        container:
-          - bugswarm/images:ubuntu-16.04
-          - bugswarm/images:ubuntu-18.04
-          - bugswarm/images:ubuntu-20.04
-  
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+      - name: Set up Python 
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'
       - name: Run shell script
         run: |
           echo 'Hello world'
           ls -al
-          echo 'Skip step to avoid bug'
-#      - name: Run python script
-#        working-directory: ./src
-#        run: |
-#          python3 pitching_machine.py
-#      - name: Link with flake8
-#        run: |
-#          pip3 install flake8==3.7.9
-#          flake8 src/pitching_machine.py
-  build_number_2:
-    name: Second build
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        fruit: [apple, pear]
-        animal: [cat, dog]
-        include:
-          - color: green
-          - color: pink
-            animal: cat
-          - fruit: apple
-            shape: circle
-          - fruit: banana
-          - fruit: banana
-            animal: cat
-    steps:
-      - name: Run shell script
+      - name: Run python script
         run: |
-          echo 'Hello world'
-          echo 'From ${{ matrix.fruit }}'
+          python src/pitching_machine.py
+        env:
+          PYTHON_TEST: "PYTHON_TEST_ENV"

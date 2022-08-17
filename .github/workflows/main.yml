@@ -61,5 +61,9 @@ jobs:
             print('X is hello')
           else:
             print('X is not hello')
+        env:
+          LOCAL: This is a random string
+        shell: python
+
       
           

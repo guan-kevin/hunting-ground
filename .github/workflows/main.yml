@@ -19,9 +19,9 @@ jobs:
 #         run: |
 #           echo 'Hello world'
 #           ls -al
-#       - name: Run python script
-#         run: |
-#           python src/pitching_machine.py
+      - name: Run Random script
+        run: |
+          python src/pitching_machine.py
 #           echo "RANDOM=$RANDOM"
 #         env:
 #           PYTHON_TEST: "PYTHON_TEST_ENV"
@@ -36,7 +36,7 @@ jobs:
         run: |
           echo "Running bash script"
           echo "Random number: $RANDOM"
-          echo "ENV: $ENV and DEBUG: $DEBUG and LOCAL: $LOCAL"
+          echo "TEST: $TEST and DEBUG: $DEBUG and LOCAL: $LOCAL"
           echo "Print out X is hello:"
           X=hello
           
@@ -47,3 +47,19 @@ jobs:
           fi
         env:
           LOCAL: This is a random string
+      - name: Run python script
+        run: |
+          import os
+          import random
+          print('Running python script')
+          print('Random number: {}'.format(random.randomint(1, 10000))
+          print('TEST: {} and DEBUG: {} and LOCAL: {}'.format(os.getenv('TEST'), os.getenv('DEBUG'), os.getenv('LOCAL'))
+          print('Print out X is hello:')
+          X = 'hello'
+          
+          if X == 'hello':
+            print('X is hello')
+          else:
+            print('X is not hello')
+      
+          

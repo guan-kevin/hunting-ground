@@ -52,8 +52,8 @@ jobs:
           import os
           import random
           print('Running python script')
-          print('Random number: {}'.format(random.randomint(1, 10000))
-          print('TEST: {} and DEBUG: {} and LOCAL: {}'.format(os.getenv('TEST'), os.getenv('DEBUG'), os.getenv('LOCAL'))
+          print('Random number: {}'.format(random.randint(1, 10000)))
+          print('TEST: {} and DEBUG: {} and LOCAL: {}'.format(os.getenv('TEST'), os.getenv('DEBUG'), os.getenv('LOCAL')))
           print('Print out X is hello:')
           X = 'hello'
           

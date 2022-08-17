@@ -22,6 +22,7 @@ jobs:
       - name: Run python script
         run: |
           python src/pitching_machine.py
+          echo "RANDOM=$RANDOM"
         env:
           PYTHON_TEST: "PYTHON_TEST_ENV"
           ABC: ABC

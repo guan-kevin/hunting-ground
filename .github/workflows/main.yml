@@ -25,3 +25,9 @@ jobs:
         env:
           PYTHON_TEST: "PYTHON_TEST_ENV"
           ABC: ABC
+          ABC2: A'BC'
+          ABC3: A' BC
+          RANDOM: random string with spaces in it
+          NOT-RANDOM: "not-random string with spaces in it"
+          XYZ: X"Y"Z
+          WXYZ: W \"X\" \"Y" 'Z

@@ -24,3 +24,4 @@ jobs:
           python src/pitching_machine.py
         env:
           PYTHON_TEST: "PYTHON_TEST_ENV"
+          ABC: ABC

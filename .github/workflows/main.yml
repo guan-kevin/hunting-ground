@@ -64,6 +64,10 @@ jobs:
         env:
           LOCAL: This is a random string
         shell: python
+      - name: Print file
+        run: |
+          cat hello.txt
+        working-directory: /src/texts
 
       
           

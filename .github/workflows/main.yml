@@ -67,7 +67,7 @@ jobs:
       - name: Print file
         run: |
           cat hello.txt
-        working-directory: /src/texts
+        working-directory: ./src/texts
 
       
           

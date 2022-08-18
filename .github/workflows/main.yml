@@ -15,23 +15,21 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.6'
-#       - name: Run shell script
-#         run: |
-#           echo 'Hello world'
-#           ls -al
+      - name: List files
+        run: |
+          ls -lia
       - name: Run Random script
         run: |
           python src/pitching_machine.py
-#           echo "RANDOM=$RANDOM"
-#         env:
-#           PYTHON_TEST: "PYTHON_TEST_ENV"
-#           ABC: ABC
-#           ABC2: A'BC'
-#           ABC3: A' BC
-#           RANDOM: random string with spaces in it
-#           NOT-RANDOM: "not-random string with spaces in it"
-#           XYZ: X"Y"Z
-#           WXYZ: W \"X\" \"Y" 'Z
+        env:
+          PYTHON_TEST: "PYTHON_TEST_ENV"
+          ABC: ABC
+          ABC2: A'BC'
+          ABC3: A' BC
+          RANDOM: random string with spaces in it
+          NOT-RANDOM: "not-random string with spaces in it"
+          XYZ: X"Y"Z
+          WXYZ: W \"X\" \"Y" 'Z
       - name: Run bash script
         run: |
           echo "Running bash script"
@@ -68,6 +66,7 @@ jobs:
         run: |
           cat hello.txt
         working-directory: ./src/texts
-
-      
-          
+      - name: Print file again
+        run: |
+          ls -lia
+          cat src/texts/hello.txt

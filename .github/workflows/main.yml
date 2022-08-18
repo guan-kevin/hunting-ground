@@ -80,8 +80,7 @@ jobs:
         with:
           python-version: '3.6'
       - name: Run Random script
-        run: |
-          python src/pitching_machine.py
+        run: python src/pitching_machine.py
       - name: Hello world action step
         id: hello
         uses: guan-kevin/javascript-action@v1

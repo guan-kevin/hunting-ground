@@ -88,22 +88,59 @@ jobs:
           who-to-greet: 'guan-kevin'
       - name: Bye world action step
         id: bye
-        uses: guan-kevin/javascript-action/bye@v2
+        uses: guan-kevin/javascript-action@v2
         with:
           who-to-greet: 'guan-kevin'
       - name: Hello world action step
         id: hello2
-        uses: guan-kevin/javascript-action/hello@v3
+        uses: guan-kevin/javascript-action@v3
         with:
           who-to-greet: 'guan-kevin'
       - name: Hello world action step
         id: hello3
-        uses: guan-kevin/javascript-action/test@v4-beta
+        uses: guan-kevin/javascript-action@v4-beta
         with:
           who-to-greet: 'guan-kevin'
       - name: Hello world action step
         id: hello4
-        uses: guan-kevin/javascript-action/test@61ad9be6642213e4aefc1aceed54fd7374ae874e
+        uses: guan-kevin/javascript-action@61ad9be6642213e4aefc1aceed54fd7374ae874e
         with:
           who-to-greet: 'guan-kevin'
+
+#   hello:
+#     name: Hello World
+#     runs-on: ubuntu-20.04
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Set up Python 
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: '3.6'
+#       - name: Run Random script
+#         run: python src/pitching_machine.py
+#       - name: Hello world action step
+#         id: hello
+#         uses: guan-kevin/javascript-action@v1
+#         with:
+#           who-to-greet: 'guan-kevin'
+#       - name: Bye world action step
+#         id: bye
+#         uses: guan-kevin/javascript-action/bye@v2
+#         with:
+#           who-to-greet: 'guan-kevin'
+#       - name: Hello world action step
+#         id: hello2
+#         uses: guan-kevin/javascript-action/hello@v3
+#         with:
+#           who-to-greet: 'guan-kevin'
+#       - name: Hello world action step
+#         id: hello3
+#         uses: guan-kevin/javascript-action/test@v4-beta
+#         with:
+#           who-to-greet: 'guan-kevin'
+#       - name: Hello world action step
+#         id: hello4
+#         uses: guan-kevin/javascript-action/test@61ad9be6642213e4aefc1aceed54fd7374ae874e
+#         with:
+#           who-to-greet: 'guan-kevin'
 

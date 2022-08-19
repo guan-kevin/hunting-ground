@@ -119,27 +119,27 @@ jobs:
       - name: Run Random script
         run: python src/pitching_machine.py
       - name: Step 1
-        uses: guan-kevin/javascript-action@v5
+        uses: guan-kevin/javascript-action@v6
         with:
           who-to-greet: 'guan-kevin'
       - name: Step 2
-        uses: guan-kevin/javascript-action/hello@v5
+        uses: guan-kevin/javascript-action/hello@v6
         with:
           who-to-greet: 'guan-kevin'
       - name: Step 3
-        uses: guan-kevin/javascript-action/hello/again@v5
+        uses: guan-kevin/javascript-action/hello/again@v6
         with:
           who-to-greet: 'guan-kevin'
       - name: Step 4
-        uses: guan-kevin/javascript-action/bye@v5
+        uses: guan-kevin/javascript-action/bye@v6
         with:
           who-to-greet: 'guan-kevin'
       - name: Step 5
-        uses: guan-kevin/javascript-action/bye/again@v5
+        uses: guan-kevin/javascript-action/bye/again@v6
         with:
           who-to-greet: 'guan-kevin'
       - name: Step 6
-        uses: guan-kevin/javascript-action/test/@v5
+        uses: guan-kevin/javascript-action/test/@v6
         with:
           who-to-greet: 'guan-kevin'
 

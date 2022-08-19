@@ -118,44 +118,28 @@ jobs:
           python-version: '3.6'
       - name: Run Random script
         run: python src/pitching_machine.py
-      - name: Hello world action step
-        id: hello
-        uses: guan-kevin/javascript-action@v1
+      - name: Step 1
+        uses: guan-kevin/javascript-action@v5
         with:
           who-to-greet: 'guan-kevin'
-      - name: Bye world action step
-        id: bye
-        uses: guan-kevin/javascript-action/bye@v2
+      - name: Step 2
+        uses: guan-kevin/javascript-action/hello@v5
         with:
           who-to-greet: 'guan-kevin'
-      - name: Hello world action step
-        id: hello2
-        uses: guan-kevin/javascript-action/hello@v3
+      - name: Step 3
+        uses: guan-kevin/javascript-action/hello/again@v5
         with:
           who-to-greet: 'guan-kevin'
-      - name: Hello world action step
-        id: hello3
-        uses: guan-kevin/javascript-action/test@v4-beta
+      - name: Step 4
+        uses: guan-kevin/javascript-action/bye@v5
         with:
           who-to-greet: 'guan-kevin'
-      - name: Hello world action step
-        id: hello4
-        uses: guan-kevin/javascript-action/test@61ad9be6642213e4aefc1aceed54fd7374ae874e
+      - name: Step 5
+        uses: guan-kevin/javascript-action/bye/again@v5
         with:
           who-to-greet: 'guan-kevin'
-      - name: Bye world action step
-        id: bye2
-        uses: guan-kevin/javascript-action/bye/again@v4
-        with:
-          who-to-greet: 'guan-kevin'
-      - name: Hello world action step
-        id: hello5
-        uses: guan-kevin/javascript-action@main
-        with:
-          who-to-greet: 'guan-kevin'
-      - name: Hello world action step
-        id: hello6
-        uses: guan-kevin/javascript-action@v5-beta
+      - name: Step 6
+        uses: guan-kevin/javascript-action/test/@v5
         with:
           who-to-greet: 'guan-kevin'
 

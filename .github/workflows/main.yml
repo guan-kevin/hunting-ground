@@ -20,14 +20,32 @@ jobs:
       WorkflowJobEnv: Job 3
       WorkflowJobStepEnv: Job 4
       JobStepEnv: Job 5
+    defaults:
+      run:
+        shell: python
+        working-directory: scripts
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 
         uses: actions/setup-python@v2
         with:
           python-version: '3.6'
-      - name: Python
-        run: python src/pitching_machine.py
+      - name: Python 1
+        run: python ../pitching_machine.py
+        shell: bash
+      - name: Python 2
+        run: python run.py
+        shell: bash
+      - name: Bash 1
+        run: ./run.sh
+        shell: bash
+      - name: Python 3
+        run: |
+          import os
+          import random
+          print('Running python script')
+          print('Random number: {}'.format(random.randint(1, 10000)))
+          print('TEST: {} and DEBUG: {} and LOCAL: {}'.format(os.getenv('TEST'), os.getenv('DEBUG'), os.getenv('LOCAL')))
       - name: Print Env
         run: |
           echo "WorkflowEnv1: {$WorkflowEnv1}"
@@ -40,6 +58,7 @@ jobs:
           echo "JobStepEnv: {$JobStepEnv}"
           echo "WorkflowJobStepEnv: {$WorkflowJobStepEnv}"
           echo "WorkflowStepEnv: {$WorkflowStepEnv}"
+        shell: bash
         env:
           StepEnv1: Step 1
           StepEnv2: Step 2

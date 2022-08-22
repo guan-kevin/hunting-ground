@@ -51,6 +51,7 @@ jobs:
       - name: Python 4
         run: python run.py
         working-directory: /
+        shell: bash
       - name: Print Env
         run: |
           echo "WorkflowEnv1: {$WorkflowEnv1}"

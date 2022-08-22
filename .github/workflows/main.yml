@@ -26,6 +26,8 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.6'
+      - name: Python
+        run: python src/pitching_machine.py
       - name: Print Env
         run: |
           echo "WorkflowEnv1: {$WorkflowEnv1}"

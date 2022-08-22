@@ -37,7 +37,9 @@ jobs:
         run: python run.py
         shell: bash
       - name: Bash 1
-        run: ./run.sh
+        run: |
+          chmod u+x run.sh
+          ./run.sh
         shell: bash
       - name: Python 3
         run: |

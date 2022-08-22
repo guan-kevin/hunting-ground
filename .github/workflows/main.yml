@@ -4,72 +4,114 @@ on: [push, pull_request]
 env:
   TEST: "TEST_ENV"
   DEBUG: "DEBUG_ENV"
+  WorkflowEnv1: Workflow 1
+  WorkflowEnv2: Workflow 2
+  WorkflowJobEnv: Workflow 3
+  WorkflowJobStepEnv: Workflow 4
+  WorkflowStepEnv: Workflow 5
 
 jobs:
   build:
-    name: Build and test
+    name: ENV test
     runs-on: ubuntu-20.04
+    env:
+      JobEnv1: Job 1
+      JobEnv2: Job 2
+      WorkflowJobEnv: Job 3
+      WorkflowJobStepEnv: Job 4
+      JobStepEnv: Job 5
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 
         uses: actions/setup-python@v2
         with:
           python-version: '3.6'
-      - name: List files
+      - name: Print Env
         run: |
-          ls -lia
-      - name: Run Random script
-        run: |
-          python src/pitching_machine.py
+          echo "WorkflowEnv1: {$WorkflowEnv1}"
+          echo "WorkflowEnv2: {$WorkflowEnv2}"
+          echo "JobEnv1: {$JobEnv1}"
+          echo "JobEnv2: {$JobEnv2}"
+          echo "StepEnv1: {$StepEnv1}"
+          echo "StepEnv2: {$StepEnv2}"
+          echo "WorkflowJobEnv: {$WorkflowJobEnv}"
+          echo "JobStepEnv: {$JobStepEnv}"
+          echo "WorkflowJobStepEnv: {$WorkflowJobStepEnv}"
+          echo "WorkflowStepEnv: {$WorkflowStepEnv}"
         env:
-          PYTHON_TEST: "PYTHON_TEST_ENV"
-          ABC: ABC
-          ABC2: A'BC'
-          ABC3: A' BC
-          RANDOM: random string with spaces in it
-          NOT-RANDOM: "not-random string with spaces in it"
-          XYZ: X"Y"Z
-          WXYZ: W \"X\" \"Y" 'Z
-      - name: Run bash script
-        run: |
-          echo "Running bash script"
-          echo "Random number: $RANDOM"
-          echo "TEST: $TEST and DEBUG: $DEBUG and LOCAL: $LOCAL"
-          echo "Print out X is hello:"
-          X=hello
+          StepEnv1: Step 1
+          StepEnv2: Step 2
+          WorkflowJobStepEnv: Step 3
+          JobStepEnv: Step 4
+          WorkflowStepEnv: Step 5
           
-          if [[ $X == "hello" ]]; then
-          	echo "X is hello"
-          else
-          	echo "X is not hello"
-          fi
-        env:
-          LOCAL: This is a random string
-      - name: Run python script
-        run: |
-          import os
-          import random
-          print('Running python script')
-          print('Random number: {}'.format(random.randint(1, 10000)))
-          print('TEST: {} and DEBUG: {} and LOCAL: {}'.format(os.getenv('TEST'), os.getenv('DEBUG'), os.getenv('LOCAL')))
-          print('Print out X is hello:')
-          X = 'hello'
           
-          if X == 'hello':
-            print('X is hello')
-          else:
-            print('X is not hello')
-        env:
-          LOCAL: This is a random string
-        shell: python
-      - name: Print file
-        run: |
-          cat hello.txt
-        working-directory: ./src/texts
-      - name: Print file again
-        run: |
-          ls -lia
-          cat src/texts/hello.txt
+
+# jobs:
+#   build:
+#     name: Build and test
+#     runs-on: ubuntu-20.04
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Set up Python 
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: '3.6'
+#       - name: List files
+#         run: |
+#           ls -lia
+#       - name: Run Random script
+#         run: |
+#           python src/::
+#         env:
+#           PYTHON_TEST: "PYTHON_TEST_ENV"
+#           ABC: ABC
+#           ABC2: A'BC'
+#           ABC3: A' BC
+#           RANDOM: random string with spaces in it
+#           NOT-RANDOM: "not-random string with spaces in it"
+#           XYZ: X"Y"Z
+#           WXYZ: W \"X\" \"Y" 'Z
+#       - name: Run bash script
+#         run: |
+#           echo "Running bash script"
+#           echo "Random number: $RANDOM"
+#           echo "TEST: $TEST and DEBUG: $DEBUG and LOCAL: $LOCAL"
+#           echo "Print out X is hello:"
+#           X=hello
+          
+#           if [[ $X == "hello" ]]; then
+#           	echo "X is hello"
+#           else
+#           	echo "X is not hello"
+#           fi
+#         env:
+#           LOCAL: This is a random string
+#       - name: Run python script
+#         run: |
+#           import os
+#           import random
+#           print('Running python script')
+#           print('Random number: {}'.format(random.randint(1, 10000)))
+#           print('TEST: {} and DEBUG: {} and LOCAL: {}'.format(os.getenv('TEST'), os.getenv('DEBUG'), os.getenv('LOCAL')))
+#           print('Print out X is hello:')
+#           X = 'hello'
+          
+#           if X == 'hello':
+#             print('X is hello')
+#           else:
+#             print('X is not hello')
+#         env:
+#           LOCAL: This is a random string
+#         shell: python
+#       - name: Print file
+#         run: |
+#           cat hello.txt
+#         working-directory: ./src/texts
+#       - name: Print file again
+#         run: |
+#           ls -lia
+#           cat src/texts/hello.txt
 #   hello:
 #     name: Hello World
 #     runs-on: ubuntu-20.04
@@ -107,39 +149,39 @@ jobs:
 #         with:
 #           who-to-greet: 'guan-kevin'
 
-  hello:
-    name: Hello World
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.6'
-      - name: Run Random script
-        run: python src/pitching_machine.py
-      - name: Step 1
-        uses: guan-kevin/javascript-action@v7
-        with:
-          who-to-greet: 'guan-kevin'
-      - name: Step 2
-        uses: guan-kevin/javascript-action/hello@v7
-        with:
-          who-to-greet: 'guan-kevin'
-      - name: Step 3
-        uses: guan-kevin/javascript-action/hello/again@v7
-        with:
-          who-to-greet: 'guan-kevin'
-      - name: Step 4
-        uses: guan-kevin/javascript-action/bye@v7
-        with:
-          who-to-greet: 'guan-kevin'
-      - name: Step 5
-        uses: guan-kevin/javascript-action/bye/again@v7
-        with:
-          who-to-greet: 'guan-kevin'
-      - name: Step 6
-        uses: guan-kevin/javascript-action/test/@v7
-        with:
-          who-to-greet: 'guan-kevin'
+#   hello:
+#     name: Hello World
+#     runs-on: ubuntu-20.04
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Set up Python 
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: '3.6'
+#       - name: Run Random script
+#         run: python src/pitching_machine.py
+#       - name: Step 1
+#         uses: guan-kevin/javascript-action@v7
+#         with:
+#           who-to-greet: 'guan-kevin'
+#       - name: Step 2
+#         uses: guan-kevin/javascript-action/hello@v7
+#         with:
+#           who-to-greet: 'guan-kevin'
+#       - name: Step 3
+#         uses: guan-kevin/javascript-action/hello/again@v7
+#         with:
+#           who-to-greet: 'guan-kevin'
+#       - name: Step 4
+#         uses: guan-kevin/javascript-action/bye@v7
+#         with:
+#           who-to-greet: 'guan-kevin'
+#       - name: Step 5
+#         uses: guan-kevin/javascript-action/bye/again@v7
+#         with:
+#           who-to-greet: 'guan-kevin'
+#       - name: Step 6
+#         uses: guan-kevin/javascript-action/test/@v7
+#         with:
+#           who-to-greet: 'guan-kevin'
 

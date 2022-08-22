@@ -48,6 +48,9 @@ jobs:
           print('Running python script')
           print('Random number: {}'.format(random.randint(1, 10000)))
           print('TEST: {} and DEBUG: {} and LOCAL: {}'.format(os.getenv('TEST'), os.getenv('DEBUG'), os.getenv('LOCAL')))
+      - name: Python 4
+        run: python run.py
+        working-directory: /
       - name: Print Env
         run: |
           echo "WorkflowEnv1: {$WorkflowEnv1}"

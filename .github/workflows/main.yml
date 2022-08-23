@@ -10,6 +10,11 @@ env:
   WorkflowJobStepEnv: Workflow 4
   WorkflowStepEnv: Workflow 5
 
+defaults:
+  run:
+    shell: python
+    working-directory: src/scripts
+
 jobs:
   build:
     name: ENV test
@@ -20,10 +25,6 @@ jobs:
       WorkflowJobEnv: Job 3
       WorkflowJobStepEnv: Job 4
       JobStepEnv: Job 5
-    defaults:
-      run:
-        shell: python
-        working-directory: src/scripts
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 

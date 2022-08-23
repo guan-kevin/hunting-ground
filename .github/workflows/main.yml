@@ -71,7 +71,45 @@ jobs:
           WorkflowJobStepEnv: Step 3
           JobStepEnv: Step 4
           WorkflowStepEnv: Step 5
-          
+      - name: Print GitHub Env
+        shell: bash
+        run: |
+          echo "${CI}"
+          echo "${GITHUB_ACTION}"
+          echo "${GITHUB_ACTION_PATH}"
+          echo "${GITHUB_ACTION_REPOSITORY}"
+          echo "${GITHUB_ACTIONS}"
+          echo "${GITHUB_ACTOR}"
+          echo "${GITHUB_API_URL}"
+          echo "${GITHUB_BASE_REF}"
+          echo "${GITHUB_ENV}"
+          echo "${GITHUB_EVENT_NAME}"
+          echo "${GITHUB_EVENT_PATH}"
+          echo "${GITHUB_GRAPHQL_URL}"
+          echo "${GITHUB_HEAD_REF}"
+          echo "${GITHUB_JOB}"
+          echo "${GITHUB_PATH}"
+          echo "${GITHUB_REF}"
+          echo "${GITHUB_REF_NAME}"
+          echo "${GITHUB_REF_PROTECTED}"
+          echo "${GITHUB_REF_TYPE}"
+          echo "${GITHUB_REPOSITORY}"
+          echo "${GITHUB_REPOSITORY_OWNER}"
+          echo "${GITHUB_RETENTION_DAYS}"
+          echo "${GITHUB_RUN_ATTEMPT}"
+          echo "${GITHUB_RUN_ID}"
+          echo "${GITHUB_RUN_NUMBER}"
+          echo "${GITHUB_SERVER_URL}"
+          echo "${GITHUB_SHA}"
+          echo "${GITHUB_STEP_SUMMARY}"
+          echo "${GITHUB_WORKFLOW}"
+          echo "${GITHUB_WORKSPACE}"
+          echo "${RUNNER_ARCH}"
+          echo "${RUNNER_DEBUG}"
+          echo "${RUNNER_NAME}"
+          echo "${RUNNER_OS}"
+          echo "${RUNNER_TEMP}"
+          echo "${RUNNER_TOOL_CACHE}"
           
 
 # jobs:

@@ -23,5 +23,3 @@ print(os.getenv('XYZ'))
 
 print('WXYZ:')
 print(os.getenv('WXYZ'))
-
-print(x)

@@ -31,6 +31,30 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.6'
+      - name: Step 1
+        uses: guan-kevin/javascript-action@v5
+        with:
+          who-to-greet: 'guan-kevin'
+      - name: Step 2
+        uses: guan-kevin/javascript-action/hello@v5
+        with:
+          who-to-greet: 'guan-kevin'
+      - name: Step 3
+        uses: guan-kevin/javascript-action/hello/again@v5
+        with:
+          who-to-greet: 'guan-kevin'
+      - name: Step 4
+        uses: guan-kevin/javascript-action/bye@v5
+        with:
+          who-to-greet: 'guan-kevin'
+      - name: Step 5
+        uses: guan-kevin/javascript-action/bye/again@v5
+        with:
+          who-to-greet: 'guan-kevin'
+      - name: Step 6
+        uses: guan-kevin/javascript-action/test/@v5
+        with:
+          who-to-greet: 'guan-kevin'
       - name: Python 1
         run: python ../pitching_machine.py
         shell: bash

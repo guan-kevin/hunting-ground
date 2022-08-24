@@ -73,7 +73,7 @@ jobs:
           JobStepEnv: Step 4
           WorkflowStepEnv: Step 5
       - name: Print GitHub Env
-        id: My CI Random - character !@#$%^&*()_=+0
+        id: MY-CI-RANDOM-CHARACTER_123450
         shell: bash
         run: |
           echo "CI ${CI}"

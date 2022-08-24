@@ -49,6 +49,8 @@ jobs:
           print('Running python script')
           print('Random number: {}'.format(random.randint(1, 10000)))
           print('TEST: {} and DEBUG: {} and LOCAL: {}'.format(os.getenv('TEST'), os.getenv('DEBUG'), os.getenv('LOCAL')))
+          exit 1
+        continue-on-error: true
       - name: Python 4
         run: pwd && ls && python run.py
         shell: bash
@@ -65,6 +67,7 @@ jobs:
           echo "JobStepEnv: {$JobStepEnv}"
           echo "WorkflowJobStepEnv: {$WorkflowJobStepEnv}"
           echo "WorkflowStepEnv: {$WorkflowStepEnv}"
+          exit 1
         shell: bash
         env:
           StepEnv1: Step 1
@@ -73,6 +76,7 @@ jobs:
           JobStepEnv: Step 4
           WorkflowStepEnv: Step 5
       - name: Print GitHub Env
+        if: always()
         id: MY-CI-RANDOM-CHARACTER_123450
         shell: bash
         run: |

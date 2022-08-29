@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Step 1
-        uses: ./.github/actions/
+        uses: ./.github/actions@510b274ad7a71e26557c6373448ecaa7d643ecdf
         with:
           who-to-greet: 'guan-kevin'
       - name: Step 2

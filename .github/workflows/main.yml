@@ -18,7 +18,7 @@ jobs:
   build:
     name: ENV test
     runs-on: ubuntu-20.04
-    container: python:3
+    container: python:3.11.0rc1
     env:
       JobEnv1: Job 1
       JobEnv2: Job 2

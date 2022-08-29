@@ -82,6 +82,9 @@ jobs:
           echo "JobStepEnv: {$JobStepEnv}"
           echo "WorkflowJobStepEnv: {$WorkflowJobStepEnv}"
           echo "WorkflowStepEnv: {$WorkflowStepEnv}"
+          echo "PYTHON_VERSION ${PYTHON_VERSION}"
+          echo "PYTHON_PIP_VERSION ${PYTHON_PIP_VERSION}"
+          echo "PYTHON_GET_PIP_SHA256 ${PYTHON_GET_PIP_SHA256}"
         env:
           StepEnv1: Step 1
           StepEnv2: Step 2

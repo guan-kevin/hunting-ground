@@ -12,13 +12,13 @@ env:
 
 defaults:
   run:
-    shell: python
     working-directory: src/scripts
 
 jobs:
   build:
     name: ENV test
     runs-on: ubuntu-20.04
+    container: python:3
     env:
       JobEnv1: Job 1
       JobEnv2: Job 2
@@ -27,10 +27,6 @@ jobs:
       JobStepEnv: Job 5
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python 
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.6'
       - name: Step 1
         uses: guan-kevin/javascript-action@v5
         with:
@@ -57,15 +53,12 @@ jobs:
           who-to-greet: 'guan-kevin'
       - name: Python 1
         run: python ../pitching_machine.py
-        shell: bash
       - name: Python 2
         run: python run.py
-        shell: bash
       - name: Bash 1
         run: |
           chmod u+x run.sh
           ./run.sh
-        shell: bash
       - name: Python 3
         run: |
           import os
@@ -73,11 +66,9 @@ jobs:
           print('Running python script')
           print('Random number: {}'.format(random.randint(1, 10000)))
           print('TEST: {} and DEBUG: {} and LOCAL: {}'.format(os.getenv('TEST'), os.getenv('DEBUG'), os.getenv('LOCAL')))
-          print(x)
-        continue-on-error: true
+        shell: python
       - name: Python 4
         run: pwd && ls && python run.py
-        shell: bash
         working-directory: .
       - name: Print Env
         run: |
@@ -91,7 +82,6 @@ jobs:
           echo "JobStepEnv: {$JobStepEnv}"
           echo "WorkflowJobStepEnv: {$WorkflowJobStepEnv}"
           echo "WorkflowStepEnv: {$WorkflowStepEnv}"
-        shell: bash
         env:
           StepEnv1: Step 1
           StepEnv2: Step 2
@@ -99,9 +89,7 @@ jobs:
           JobStepEnv: Step 4
           WorkflowStepEnv: Step 5
       - name: Print GitHub Env
-        if: always()
         id: MY-CI-RANDOM-CHARACTER_123450
-        shell: bash
         run: |
           echo "CI ${CI}"
           echo "GITHUB_ACTION ${GITHUB_ACTION}"
@@ -142,6 +130,7 @@ jobs:
       - name: Failure Alert
         if: ${{ failure() }}
         run: print('Job failed!')
+        shell: python
           
 
 # jobs:

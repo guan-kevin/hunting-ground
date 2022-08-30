@@ -24,5 +24,5 @@ print(os.getenv('XYZ'))
 print('WXYZ:')
 print(os.getenv('WXYZ'))
 
-print(Buggy version 19)
-# print('Fixed version 18')
+# print(Buggy version 19)
+print('Fixed version 19')

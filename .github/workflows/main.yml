@@ -130,7 +130,7 @@ jobs:
           echo "RUNNER_TEMP ${RUNNER_TEMP}"
           echo "RUNNER_TOOL_CACHE ${RUNNER_TOOL_CACHE}"
       - id: test-composite
-        uses: guan-kevin/composite-action@v1
+        uses: guan-kevin/composite-action@v2
         with:
           who-to-greet: guan-kevin
       - name: Failure Alert

@@ -10,6 +10,10 @@ env:
   WorkflowJobStepEnv: Workflow 4
   WorkflowStepEnv: Workflow 5
 
+defaults:
+  run:
+    working-directory: src/scripts
+
 jobs:
   build:
     name: ENV test
@@ -20,27 +24,40 @@ jobs:
       WorkflowJobEnv: Job 3
       WorkflowJobStepEnv: Job 4
       JobStepEnv: Job 5
-    defaults:
-      run:
-        shell: python
-        working-directory: src/scripts
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python 
-        uses: actions/setup-python@v2
+      - name: Step 1
+        uses: ./.github/actions
         with:
-          python-version: '3.6'
+          who-to-greet: 'guan-kevin'
+      - name: Step 2
+        uses: guan-kevin/javascript-action/hello@v5
+        with:
+          who-to-greet: 'guan-kevin'
+      - name: Step 3
+        uses: guan-kevin/javascript-action/hello/again@v5
+        with:
+          who-to-greet: 'guan-kevin'
+      - name: Step 4
+        uses: guan-kevin/javascript-action/bye@v5
+        with:
+          who-to-greet: 'guan-kevin'
+      - name: Step 5
+        uses: guan-kevin/javascript-action/bye/again@v5
+        with:
+          who-to-greet: 'guan-kevin'
+      - name: Step 6
+        uses: guan-kevin/javascript-action/test/@v5
+        with:
+          who-to-greet: 'guan-kevin'
       - name: Python 1
         run: python ../pitching_machine.py
-        shell: bash
       - name: Python 2
         run: python run.py
-        shell: bash
       - name: Bash 1
         run: |
           chmod u+x run.sh
           ./run.sh
-        shell: bash
       - name: Python 3
         run: |
           import os
@@ -48,9 +65,9 @@ jobs:
           print('Running python script')
           print('Random number: {}'.format(random.randint(1, 10000)))
           print('TEST: {} and DEBUG: {} and LOCAL: {}'.format(os.getenv('TEST'), os.getenv('DEBUG'), os.getenv('LOCAL')))
+        shell: python
       - name: Python 4
         run: pwd && ls && python run.py
-        shell: bash
         working-directory: .
       - name: Print Env
         run: |
@@ -64,14 +81,78 @@ jobs:
           echo "JobStepEnv: {$JobStepEnv}"
           echo "WorkflowJobStepEnv: {$WorkflowJobStepEnv}"
           echo "WorkflowStepEnv: {$WorkflowStepEnv}"
-        shell: bash
+          echo "PYTHON_VERSION ${PYTHON_VERSION}"
+          echo "PYTHON_PIP_VERSION ${PYTHON_PIP_VERSION}"
+          echo "PYTHON_GET_PIP_SHA256 ${PYTHON_GET_PIP_SHA256}"
         env:
           StepEnv1: Step 1
           StepEnv2: Step 2
           WorkflowJobStepEnv: Step 3
           JobStepEnv: Step 4
           WorkflowStepEnv: Step 5
-          
+      - name: Print GitHub Env
+        id: MY-CI-RANDOM-CHARACTER_123450
+        run: |
+          echo "CI ${CI}"
+          echo "GITHUB_ACTION ${GITHUB_ACTION}"
+          echo "GITHUB_ACTION_PATH ${GITHUB_ACTION_PATH}"
+          echo "GITHUB_ACTION_REPOSITORY ${GITHUB_ACTION_REPOSITORY}"
+          echo "GITHUB_ACTIONS ${GITHUB_ACTIONS}"
+          echo "GITHUB_ACTOR ${GITHUB_ACTOR}"
+          echo "GITHUB_API_URL ${GITHUB_API_URL}"
+          echo "GITHUB_BASE_REF ${GITHUB_BASE_REF}"
+          echo "GITHUB_ENV ${GITHUB_ENV}"
+          echo "GITHUB_EVENT_NAME ${GITHUB_EVENT_NAME}"
+          echo "GITHUB_EVENT_PATH ${GITHUB_EVENT_PATH}"
+          echo "GITHUB_GRAPHQL_URL ${GITHUB_GRAPHQL_URL}"
+          echo "GITHUB_HEAD_REF ${GITHUB_HEAD_REF}"
+          echo "GITHUB_JOB ${GITHUB_JOB}"
+          echo "GITHUB_PATH ${GITHUB_PATH}"
+          echo "GITHUB_REF ${GITHUB_REF}"
+          echo "GITHUB_REF_NAME ${GITHUB_REF_NAME}"
+          echo "GITHUB_REF_PROTECTED ${GITHUB_REF_PROTECTED}"
+          echo "GITHUB_REF_TYPE ${GITHUB_REF_TYPE}"
+          echo "GITHUB_REPOSITORY ${GITHUB_REPOSITORY}"
+          echo "GITHUB_REPOSITORY_OWNER ${GITHUB_REPOSITORY_OWNER}"
+          echo "GITHUB_RETENTION_DAYS ${GITHUB_RETENTION_DAYS}"
+          echo "GITHUB_RUN_ATTEMPT ${GITHUB_RUN_ATTEMPT}"
+          echo "GITHUB_RUN_ID ${GITHUB_RUN_ID}"
+          echo "GITHUB_RUN_NUMBER ${GITHUB_RUN_NUMBER}"
+          echo "GITHUB_SERVER_URL ${GITHUB_SERVER_URL}"
+          echo "GITHUB_SHA ${GITHUB_SHA}"
+          echo "GITHUB_STEP_SUMMARY ${GITHUB_STEP_SUMMARY}"
+          echo "GITHUB_WORKFLOW ${GITHUB_WORKFLOW}"
+          echo "GITHUB_WORKSPACE ${GITHUB_WORKSPACE}"
+          echo "RUNNER_ARCH ${RUNNER_ARCH}"
+          echo "RUNNER_DEBUG ${RUNNER_DEBUG}"
+          echo "RUNNER_NAME ${RUNNER_NAME}"
+          echo "RUNNER_OS ${RUNNER_OS}"
+          echo "RUNNER_TEMP ${RUNNER_TEMP}"
+          echo "RUNNER_TOOL_CACHE ${RUNNER_TOOL_CACHE}"
+      - id: test-composite
+        uses: guan-kevin/composite-action@v5
+        with:
+          who-to-greet: guan-kevin
+      - id: test-composite2
+        uses: ./hello/
+      - id: test-composite3
+        uses: ./bye
+      - name: Python 1 Again
+        run: python ../pitching_machine.py
+      - name: Python 2 Again
+        run: python run.py
+      - name: Step 1 Again
+        uses: ./.github/actions
+        with:
+          who-to-greet: 'guan-kevin'
+      - name: Step 2 Again
+        uses: guan-kevin/javascript-action/hello@v5
+        with:
+          who-to-greet: 'guan-kevin'
+      - name: Failure Alert
+        if: ${{ failure() }}
+        run: print('Job failed!')
+        shell: python
           
 
 # jobs:

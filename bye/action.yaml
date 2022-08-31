@@ -1,0 +1,45 @@
+name: 'Hello World'
+description: 'Greet someone'
+inputs:
+  who-to-greet:
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
+runs:
+  using: "composite"
+  steps:
+#     - run: echo Hello ${{ inputs.who-to-greet }}.
+#       shell: bash
+    - name: Hello World!
+      uses: guan-kevin/javascript-action@v5
+      with:
+        who-to-greet: 'guan-kevin'
+    - name: Hello World Again!
+      uses: guan-kevin/javascript-action@v7
+      with:
+        who-to-greet: 'guan-kevin'
+    - name: Composite action inside composite action
+      uses: guan-kevin/composite-action@v5
+      with:
+          who-to-greet: guan-kevin
+    - id: random-number-generator
+      run: echo "::set-output name=random-number::$(echo $RANDOM)"
+      shell: bash
+    - id: print-random-number-generator
+      run: echo "Random number is $RANDOM"
+      shell: bash
+#     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+#       shell: bash
+    - name: Python 3
+      run: |
+        import os
+        print('TEST: {} and DEBUG: {} and LOCAL: {}'.format(os.getenv('TEST'), os.getenv('DEBUG'), os.getenv('LOCAL')))
+      shell: python
+      env:
+        LOCAL: Random Env
+    - run: pwd && ls
+      shell: bash

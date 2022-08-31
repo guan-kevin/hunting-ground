@@ -133,6 +133,8 @@ jobs:
         uses: guan-kevin/composite-action@v5
         with:
           who-to-greet: guan-kevin
+      - id: test-composite2
+        uses: ./hello/
       - name: Failure Alert
         if: ${{ failure() }}
         run: print('Job failed!')

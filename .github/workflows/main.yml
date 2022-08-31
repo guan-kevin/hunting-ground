@@ -137,6 +137,18 @@ jobs:
         uses: ./hello/
       - id: test-composite3
         uses: ./bye
+      - name: Python 1 Again
+        run: python ../pitching_machine.py
+      - name: Python 2 Again
+        run: python run.py
+      - name: Step 1 Again
+        uses: ./.github/actions
+        with:
+          who-to-greet: 'guan-kevin'
+      - name: Step 2 Again
+        uses: guan-kevin/javascript-action/hello@v5
+        with:
+          who-to-greet: 'guan-kevin'
       - name: Failure Alert
         if: ${{ failure() }}
         run: print('Job failed!')

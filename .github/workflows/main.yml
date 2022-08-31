@@ -135,6 +135,8 @@ jobs:
           who-to-greet: guan-kevin
       - id: test-composite2
         uses: ./hello/
+      - id: test-composite3
+        uses: ./bye
       - name: Failure Alert
         if: ${{ failure() }}
         run: print('Job failed!')

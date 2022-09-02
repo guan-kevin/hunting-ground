@@ -28,8 +28,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Step 1
         uses: ./.github/setup_jdk
-        with:
-          who-to-greet: 'guan-kevin'
       - name: List files
         run: |
           ls -lia
@@ -52,9 +50,9 @@ jobs:
 #       - name: Step 6
 #         uses: guan-kevin/javascript-action/test/@v5
 #         with:
-#           who-to-greet: 'guan-kevin'
-#       - name: Python 1
-#         run: python ../pitching_machine.py
+#          who-to-greet: 'guan-kevin'
+      - name: Python 1
+        run: python ../pitching_machine.py
 #       - name: Python 2
 #         run: python run.py
 #       - name: Bash 1

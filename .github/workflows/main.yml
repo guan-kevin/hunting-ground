@@ -1,14 +1,14 @@
 name: Main
 on: [push, pull_request]
 
-env:
-  TEST: "TEST_ENV"
-  DEBUG: "DEBUG_ENV"
-  WorkflowEnv1: Workflow 1
-  WorkflowEnv2: Workflow 2
-  WorkflowJobEnv: Workflow 3
-  WorkflowJobStepEnv: Workflow 4
-  WorkflowStepEnv: Workflow 5
+# env:
+#   TEST: "TEST_ENV"
+#   DEBUG: "DEBUG_ENV"
+#   WorkflowEnv1: Workflow 1
+#   WorkflowEnv2: Workflow 2
+#   WorkflowJobEnv: Workflow 3
+#   WorkflowJobStepEnv: Workflow 4
+#   WorkflowStepEnv: Workflow 5
 
 defaults:
   run:
@@ -18,13 +18,14 @@ jobs:
   build:
     name: ENV test
     runs-on: ubuntu-20.04
-    env:
-      JobEnv1: Job 1
-      JobEnv2: Job 2
-      WorkflowJobEnv: Job 3
-      WorkflowJobStepEnv: Job 4
-      JobStepEnv: Job 5
+#     env:
+#       JobEnv1: Job 1
+#       JobEnv2: Job 2
+#       WorkflowJobEnv: Job 3
+#       WorkflowJobStepEnv: Job 4
+#       JobStepEnv: Job 5
     steps:
+      - run: printenv
       - uses: actions/checkout@v2
       - name: Step 1
         uses: ./.github/setup_jdk

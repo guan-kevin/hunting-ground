@@ -40,11 +40,13 @@ jobs:
           echo "in multiple" >> $GITHUB_ENV
           echo "lines" >> $GITHUB_ENV
           echo "OK" >> $GITHUB_ENV
+          echo "GITHUB_ENV = ${GITHUB_ENV}"
           cat $GITHUB_ENV
       - name: Read ENV
         run: |
           echo "Random variable is ${RANDOM_variable}"
           echo "Not random is ${NOT_RANDOM_variable}"
+          echo "GITHUB_ENV = ${GITHUB_ENV}"
           cat $GITHUB_ENV
 #       - name: Step 2
 #         uses: guan-kevin/javascript-action/hello@v5

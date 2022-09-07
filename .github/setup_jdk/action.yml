@@ -6,8 +6,6 @@ runs:
       with:
         java-version: '11'
         distribution: 'temurin'
-    - run: exit 2
-      shell: bash
     - run: printenv
       shell: bash
  

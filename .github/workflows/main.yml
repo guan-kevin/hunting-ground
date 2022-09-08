@@ -48,6 +48,8 @@ jobs:
           echo "Not random is ${NOT_RANDOM_variable}"
           echo "GITHUB_ENV = ${GITHUB_ENV}"
           cat $GITHUB_ENV
+          echo "$PATH"
+          pwd
 #       - name: Step 2
 #         uses: guan-kevin/javascript-action/hello@v5
 #         with:

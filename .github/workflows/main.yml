@@ -74,11 +74,12 @@ jobs:
         run: |
           mkdir ~/.tools/
           cat <<DONE >> ~/.tools/hello.sh
-          Hello from
+          echo "Hello from"
           pwd
           DONE
           chmod u+x ~/.tools/hello.sh
           ~/.tools/hello.sh
+          hello.sh
       - name: Python 1
         run: python ../pitching_machine.py
 #       - name: Python 2

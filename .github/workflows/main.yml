@@ -32,6 +32,7 @@ jobs:
       - name: List files
         run: |
           ls -lia
+          echo "::error file={name},line={line},endLine={endLine},title={title}::Test Message"
       - name: Env test
         run: |
           echo "RANDOM_variable=hello WORLD" >> $GITHUB_ENV

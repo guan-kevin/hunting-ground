@@ -80,7 +80,8 @@ jobs:
           chmod u+x ~/.tools/hello.sh
           ~/.tools/hello.sh
           echo "$HOME/.tools" >> $GITHUB_PATH
-          hello.sh
+      - name: Run file
+        run: hello.sh
       - name: Python 1
         run: python ../pitching_machine.py
 #       - name: Python 2

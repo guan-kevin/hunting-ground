@@ -72,13 +72,13 @@ jobs:
 #          who-to-greet: 'guan-kevin'
       - name: Create file
         run: |
-          mkdir /tools
-          cat <<DONE >> /tools/hello.sh
+          mkdir ~/.tools/
+          cat <<DONE >> ~/.tools/hello.sh
           Hello from
           pwd
           DONE
-          chmod u+x /tools/hello.sh
-          /tools/hello.sh
+          chmod u+x ~/.tools/hello.sh
+          ~/.tools/hello.sh
       - name: Python 1
         run: python ../pitching_machine.py
 #       - name: Python 2

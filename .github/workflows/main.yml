@@ -51,10 +51,10 @@ jobs:
           cat $GITHUB_ENV
           echo "$PATH"
           pwd
-#       - name: Step 2
-#         uses: guan-kevin/javascript-action/hello@v5
-#         with:
-#           who-to-greet: 'guan-kevin'
+      - name: Step 2
+        uses: guan-kevin/javascript-action/hello@v8
+        with:
+          who-to-greet: 'guan-kevin'
 #       - name: Step 3
 #         uses: guan-kevin/javascript-action/hello/again@v5
 #         with:

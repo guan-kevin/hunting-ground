@@ -32,7 +32,8 @@ jobs:
           pwd
       - name: Hello World
         uses: guan-kevin/javascript-action/@v7
-#       - run: printenv
+      - run: printenv
+      - run: echo "Hello ${{ github.actor }}"
       - name: Setup Java then pwd
         uses: ./.github/setup_jdk
       - name: List files

@@ -32,9 +32,9 @@ jobs:
           pwd
       - name: Hello World
         uses: guan-kevin/javascript-action/@v7
-#       - run: printenv
-#       - name: Step 1
-#         uses: ./.github/setup_jdk
+      - run: printenv
+      - name: Setup Java then pwd
+        uses: ./.github/setup_jdk
       - name: List files
         run: |
           ls -lia

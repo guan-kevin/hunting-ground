@@ -52,7 +52,7 @@ jobs:
           echo "$PATH"
           pwd
       - name: Step 2
-        uses: guan-kevin/javascript-action/hello@v8
+        uses: guan-kevin/javascript-action@v8
         with:
           who-to-greet: 'guan-kevin'
 #       - name: Step 3

@@ -26,35 +26,41 @@ jobs:
 #       JobStepEnv: Job 5
     steps:
       - uses: actions/checkout@v2
-      - run: printenv
-      - name: Step 1
-        uses: ./.github/setup_jdk
+      - run: |
+          echo "Second step in main.yml"
+          echo "PWD:"
+          pwd
+      - name: Hello World
+        uses: guan-kevin/javascript-action/@v7
+#       - run: printenv
+#       - name: Step 1
+#         uses: ./.github/setup_jdk
       - name: List files
         run: |
           ls -lia
-          echo "::error::This is a Test Message"
-      - name: Env test
-        run: |
-          echo "RANDOM_variable=hello WORLD" >> $GITHUB_ENV
-          echo "NOT_RANDOM_variable<<OK" >> $GITHUB_ENV
-          echo "This variable is not random" >> $GITHUB_ENV
-          echo "in multiple" >> $GITHUB_ENV
-          echo "lines" >> $GITHUB_ENV
-          echo "OK" >> $GITHUB_ENV
-          echo "GITHUB_ENV = ${GITHUB_ENV}"
-          cat $GITHUB_ENV
-      - name: Read ENV
-        run: |
-          echo "Random variable is ${RANDOM_variable}"
-          echo "Not random is ${NOT_RANDOM_variable}"
-          echo "GITHUB_ENV = ${GITHUB_ENV}"
-          cat $GITHUB_ENV
-          echo "$PATH"
-          pwd
-      - name: Step 2
-        uses: guan-kevin/javascript-action@v8
-        with:
-          who-to-greet: 'guan-kevin'
+#           echo "::error::This is a Test Message"
+#       - name: Env test
+#         run: |
+#           echo "RANDOM_variable=hello WORLD" >> $GITHUB_ENV
+#           echo "NOT_RANDOM_variable<<OK" >> $GITHUB_ENV
+#           echo "This variable is not random" >> $GITHUB_ENV
+#           echo "in multiple" >> $GITHUB_ENV
+#           echo "lines" >> $GITHUB_ENV
+#           echo "OK" >> $GITHUB_ENV
+#           echo "GITHUB_ENV = ${GITHUB_ENV}"
+#           cat $GITHUB_ENV
+#       - name: Read ENV
+#         run: |
+#           echo "Random variable is ${RANDOM_variable}"
+#           echo "Not random is ${NOT_RANDOM_variable}"
+#           echo "GITHUB_ENV = ${GITHUB_ENV}"
+#           cat $GITHUB_ENV
+#           echo "$PATH"
+#           pwd
+#       - name: Step 2
+#         uses: guan-kevin/javascript-action@v8
+#         with:
+#           who-to-greet: 'guan-kevin'
 #       - name: Step 3
 #         uses: guan-kevin/javascript-action/hello/again@v5
 #         with:
@@ -71,16 +77,16 @@ jobs:
 #         uses: guan-kevin/javascript-action/test/@v5
 #         with:
 #          who-to-greet: 'guan-kevin'
-      - name: Create file
-        run: |
-          mkdir ~/.tools/
-          cat <<DONE >> ~/.tools/hello.sh
-          echo "Hello from"
-          pwd
-          DONE
-          chmod u+x ~/.tools/hello.sh
-          ~/.tools/hello.sh
-          echo "$HOME/.tools" >> $GITHUB_PATH
+#       - name: Create file
+#         run: |
+#           mkdir ~/.tools/
+#           cat <<DONE >> ~/.tools/hello.sh
+#           echo "Hello from"
+#           pwd
+#           DONE
+#           chmod u+x ~/.tools/hello.sh
+#           ~/.tools/hello.sh
+#           echo "$HOME/.tools" >> $GITHUB_PATH
       - name: Run file
         run: hello.sh
       - name: Python 1

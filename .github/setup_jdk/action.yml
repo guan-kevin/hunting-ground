@@ -6,6 +6,9 @@ runs:
       with:
         java-version: '11'
         distribution: 'temurin'
-    - run: printenv
+    - run: |
+        echo "Second step in setup_jsk composite action"
+        echo "PWD:"
+        pwd
       shell: bash
  

@@ -25,6 +25,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v4
-      - uses: guan-kevin/javascript-action@v9
+      - uses: guan-kevin/javascript-action@v8
       - name: Python 1
         run: python src/pitching_machine.py

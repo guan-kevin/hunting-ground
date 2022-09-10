@@ -1,0 +1,29 @@
+name: Predefined Action Test
+on: [push, pull_request]
+
+env:
+  TEST: Test Env
+  DEBUG: Debug Env
+  WorkflowEnv1: Workflow 1
+  WorkflowEnv2: Workflow 2
+  WorkflowJobEnv: Workflow 3
+  WorkflowJobStepEnv: Workflow 4
+  WorkflowStepEnv: Workflow 5
+  
+  
+jobs:
+  build:
+    name: Test Action
+    runs-on: ubuntu-20.04
+    env:
+      JobEnv1: Job 1
+      JobEnv2: Job 2
+      WorkflowJobEnv: Job 3
+      WorkflowJobStepEnv: Job 4
+      obStepEnv: Job 5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v4
+      - uses: guan-kevin/javascript-action@v9
+      - name: Python 1
+        run: python src/pitching_machine.py

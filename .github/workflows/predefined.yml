@@ -15,7 +15,6 @@ jobs:
   build:
     name: Test Action
     runs-on: ubuntu-20.04
-    continue-on-error: true
     env:
       JobEnv1: Job 1
       JobEnv2: Job 2

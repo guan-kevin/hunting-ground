@@ -10,6 +10,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Exit
         run: exit 1
-        continue-on-error: false
       - name: Python 1
         run: python src/pitching_machine.py

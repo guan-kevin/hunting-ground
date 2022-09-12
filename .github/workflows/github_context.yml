@@ -1,4 +1,3 @@
-name: GitHub Context Action Test
 on: [push, pull_request]
 
 jobs:

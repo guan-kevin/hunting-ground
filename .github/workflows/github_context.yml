@@ -1,10 +1,15 @@
 on: [push, pull_request]
 name: GitHub Context Testing
 
+env:
+  WorkflowEnv: Workflow level
+
 jobs:
   build:
     name: Test Action
     runs-on: ubuntu-20.04
+    env:
+      JobEnv: Job Level
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v4
@@ -25,5 +30,7 @@ jobs:
       - name: Setup Java then pwd and print contexts
         uses: ./.github/setup_jdk
       - name: Run another composite action
-        uses: guan-kevin/composite-action@v7
+        uses: guan-kevin/composite-action@v8
+        env:
+          StepEnv: Step Level
       - run: python src/pitching_machine.py

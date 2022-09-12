@@ -1,0 +1,13 @@
+name: Continue-on-error Test
+  
+jobs:
+  build:
+    name: Test Action
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Exit
+        run: exit 1
+        continue-on-error: true
+      - name: Python 1
+        run: python src/pitching_machine.py

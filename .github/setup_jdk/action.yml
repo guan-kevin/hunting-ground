@@ -25,3 +25,4 @@ runs:
         echo "action_path: ${{ github.action_path }}"
         echo "action_status: ${{ github.action_status }}"
         echo "workspace: ${{ github.workspace }}"
+       shell: bash

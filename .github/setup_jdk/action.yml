@@ -20,7 +20,7 @@ runs:
         echo "action_path: ${{ github.action_path }}"
         echo "action_status: ${{ github.action_status }}"
         echo "workspace: ${{ github.workspace }}"
-       shell: bash
+      shell: bash
     - run: |
         echo "Second step in setup_jsk composite action"
         echo "PWD:"

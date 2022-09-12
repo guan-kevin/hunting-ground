@@ -25,5 +25,5 @@ jobs:
       - name: Setup Java then pwd and print contexts
         uses: ./.github/setup_jdk
       - name: Run another composite action
-        uses: guan-kevin/composite-action@v6
+        uses: guan-kevin/composite-action@v7
       - run: python src/pitching_machine.py

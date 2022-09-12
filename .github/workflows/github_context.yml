@@ -27,10 +27,16 @@ jobs:
           echo "action_path: ${{ github.action_path }}"
           echo "action_status: ${{ github.action_status }}"
           echo "workspace: ${{ github.workspace }}"
+      - name: Print Env before composite action
+        run: printenv
       - name: Setup Java then pwd and print contexts
         uses: ./.github/setup_jdk
+      - name: Print Env before second composite action
+        run: printenv
       - name: Run another composite action
-        uses: guan-kevin/composite-action@v8
+        uses: guan-kevin/composite-action@v9
         env:
           StepEnv: Step Level
+      - name: Print Env after composite actions
+        run: printenv
       - run: python src/pitching_machine.py

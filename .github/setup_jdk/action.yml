@@ -1,3 +1,19 @@
+inputs:
+  your-name:
+    description: 'Your name?'
+    required: false
+    default: unknown
+  repoName:
+    description: 'Repo name?'
+    required: true
+  action_name:
+    description: 'Action name?'
+    default: empty
+  STEPNAME:
+    description: 'Step name?'
+    required: true
+    default: EMPTY
+
 runs:
   using: "composite"
   steps:
@@ -11,6 +27,11 @@ runs:
         echo "PWD:"
         pwd
       shell: bash
+    - run: |
+        echo "Your name is ${{ inputs.YOUR-NAME }}"
+        echo "Repo name is ${{ inputs.REPONAME }}"
+        echo "Action name is ${{ inputs.ACTION_NAME }}"
+        echo "Step name is ${{ inputs.STEPNAME }}"
     - run: |
         echo "actor: ${{ github.actor }}"
         echo "ref: ${{ github.ref }}"

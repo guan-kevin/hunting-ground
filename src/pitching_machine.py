@@ -1,2 +1,2 @@
-# print(Buggy version 44)
-print('Fixed version 44')
+print(Buggy version 45)
+# print('Fixed version 44')

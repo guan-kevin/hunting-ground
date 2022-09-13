@@ -1,0 +1,13 @@
+name: Event Payload Test
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Test Action
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Show payload
+        run: echo "${{ github.event }}"
+      - name: Python 1
+        run: python src/pitching_machine.py

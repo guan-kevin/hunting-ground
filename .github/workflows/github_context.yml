@@ -56,5 +56,7 @@ jobs:
       - name: View context attributes
         uses: actions/github-script@v6
         with:
-          script: console.log(context)
+          script: |
+            console.log(context)
+            console.log("${{ github.action_repository }}")
       - run: python src/pitching_machine.py

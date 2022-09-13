@@ -31,6 +31,11 @@ jobs:
         run: printenv
       - name: Setup Java then pwd and print contexts
         uses: ./.github/setup_jdk
+        with:
+          your-name: "guan-kevin"
+          reponame: hunting-ground
+          action_name: setup_jdk
+          STEPNAME: setup Java then pwd and print contexts
       - name: Print Env before second composite action
         run: printenv
       - name: Run another composite action

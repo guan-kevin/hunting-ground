@@ -8,6 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Show payload
-        run: echo "${{ github.event }}"
+        run: echo "${{ toJson(github.event) }}"
       - name: Python 1
         run: python src/pitching_machine.py

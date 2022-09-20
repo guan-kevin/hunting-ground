@@ -16,6 +16,8 @@ jobs:
       - run: printenv
       - run: |
           echo "actor: ${{ github.actor }} ref: ${{ github.ref }} triggering_actor: ${{ github.triggering_actor }} workflow: ${{ github.workflow }} head_ref: ${{ github.head_ref }} base_ref: ${{ github.base_ref }} event_name: ${{ github.event_name }} action: ${{ github.action }} action_repository: ${{ github.action_repository }} action_ref: ${{ github.action_ref }} action_path: ${{ github.action_path }} action_status: ${{ github.action_status }} workspace: ${{ github.workspace }}"
+      - run: |
+          echo "message: ${{ github.event.head_commit.message }}"
       - name: View context attributes
         run: cat $GITHUB_EVENT_PATH
 #         uses: actions/github-script@v6

@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Set up python action
         uses: actions/setup-python@v4
-      - uses: docker://testcontainers/helloworld:latest
+#       - uses: docker://testcontainers/helloworld:latest
       - uses: actions/hello-world-docker-action@master
         with:
           who-to-greet: 'Mona the Octocat'

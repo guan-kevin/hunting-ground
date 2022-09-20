@@ -16,4 +16,4 @@ jobs:
           who-to-greet: 'Mona the Octocat'
       - name: Predefined action
         uses: guan-kevin/javascript-action@v8
-      - run: python src/pitching_machine.py
+      - run: ./prc/scripts/run.sh

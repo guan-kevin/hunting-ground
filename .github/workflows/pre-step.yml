@@ -16,4 +16,6 @@ jobs:
           who-to-greet: 'Mona the Octocat'
       - name: Predefined action
         uses: guan-kevin/javascript-action@v8
-      - run: ./src/scripts/run.sh
+      - run: |
+          chmod u+x ./src/scripts/run.sh
+          ./src/scripts/run.sh

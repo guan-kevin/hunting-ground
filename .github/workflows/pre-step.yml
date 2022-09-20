@@ -5,12 +5,15 @@ jobs:
   build:
     name: Test Action
     runs-on: ubuntu-20.04
-    container: ubuntu-22.04
+    container: ubuntu:22.04
     steps:
       - name: Check out action
         uses: actions/checkout@v2
       - name: Set up python action
         uses: actions/setup-python@v4
+      - uses: actions/hello-world-docker-action@master
+        with:
+          who-to-greet: 'Mona the Octocat'
       - name: Predefined action
         uses: guan-kevin/javascript-action@v8
       - run: python src/pitching_machine.py

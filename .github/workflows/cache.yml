@@ -15,7 +15,7 @@ jobs:
       - name: Install requests
         run: |
           pip --version
-          python -m pip version
+          python -m pip --version
           pip install -r requirements.txt
       - name: Python command
         run: python src/pitching_machine.py

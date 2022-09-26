@@ -5,10 +5,10 @@ runs:
   steps:
     - run: echo "Running composite action"
       shell: bash
-    - run: |
-        echo "Exit 1"
-        exit 1
-      shell: bash
-    - run: |
-        print("ERROR IF YOU CAN SEE THIS LINE")
-      shell: python
+#     - run: |
+#         echo "Exit 1"
+#         exit 1
+#       shell: bash
+#     - run: |
+#         print("ERROR IF YOU CAN SEE THIS LINE")
+#       shell: python

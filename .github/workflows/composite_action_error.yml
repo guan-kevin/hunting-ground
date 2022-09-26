@@ -1,0 +1,16 @@
+name: Test Composite Action Error
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Composite Action Test
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          echo "Hello World"
+      - name: Hello World
+        uses: ./composite_action
+      - name: Python script
+        run: python src/pitching_machine.py
+      

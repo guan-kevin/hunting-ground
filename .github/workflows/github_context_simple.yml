@@ -19,7 +19,8 @@ jobs:
 #       - run: |
 #           echo "message: ${{ github.event.head_commit.message }}"
       - name: View context attributes
-#         run: cat $GITHUB_EVENT_PATH
+        run: cat $GITHUB_EVENT_PATH
+      - name: View context using predefined action
         uses: actions/github-script@v6
         with:
           script: |

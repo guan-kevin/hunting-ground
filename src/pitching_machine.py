@@ -1,7 +1,7 @@
-import requests
+# import requests
 
-# print(Buggy version 50)
-print('Fixed version 50')
+print(Buggy version 51)
+# print('Fixed version 50')
 
-r = requests.get('https://google.com')
-print(r.status_code)
+# r = requests.get('https://google.com')
+# print(r.status_code)

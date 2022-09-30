@@ -53,9 +53,9 @@ jobs:
       - run: echo "Test 14 failed" && exit 1
         if: ${{ !success() }}
       - id: Random_Step-Name2
-        run: echo "Error OK!" && exit 1
+        run: echo "Error OK is ${{ github.event.repository.owner.login == 'guan-kevin' }}" && exit 1
         continue-on-error: ${{ github.event.repository.owner.login == 'guan-kevin' }}
       - run: |
           if [[ ${{ steps.Random_Step-Name1.conclusion }} == 'success' && ${{ steps.Random_Step-Name1.outcome }} == 'success' && ${{ steps.Random_Step-Name2.conclusion }} == 'success' && ${{ steps.Random_Step-Name2.outcome }} == 'failure' ]]; then exit 0; else echo "Test 15 failed" && exit 1; fi
       - run: echo "Passed tests"
-        if: ${{ steps.Random_Step-Name1.conclusion == 'success' }}
+        if: ${{ steps.Random_Step-Name1.outcome == 'success' && steps.Random_Step-Name2.outcome == 'failure' }}

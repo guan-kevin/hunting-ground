@@ -12,9 +12,9 @@ jobs:
       - run: echo "Test 2 failed" && exit 1
         if: ${{ failure() }}
       - run: echo "Test 3 failed" && exit 1
-        if: github.actor != guan-kevin
+        if: github.actor != 'guan-kevin'
       - run: echo "Test 4 failed" && exit 1
-        if: github.actor == dummy-username
+        if: github.actor == 'dummy-username'
       - run: echo "Test 5 failed" && exit 1
         if: ${{ github.actor != 'guan-kevin' }}
       - run: echo "Test 6 failed" && exit 1

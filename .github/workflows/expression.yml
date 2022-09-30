@@ -22,11 +22,11 @@ jobs:
       - run: echo "Test 7 failed" && exit 1
         if: contains('Hello world', 'bye')
       - run: echo "Test 8 failed" && exit 1
-        if: !contains('Hello world', 'world')
+        if: ${{ !contains('Hello world', 'world') }}
       - run: echo "Test 9 failed" && exit 1
-        if: !startsWith('Hello world', 'Hello')
+        if: ${{ !startsWith('Hello world', 'Hello') }}
       - run: echo "Test 10 failed" && exit 1
-        if: !endsWith('Hello world', 'world')
+        if: ${{ !endsWith('Hello world', 'world') }}
       - id: Random_Step-Name
         run: |
           echo "${{ env.myNull }} vs $myNull"
@@ -49,8 +49,8 @@ jobs:
       - run: echo "Test 12 failed" && exit 1
         if: (1 + 2 * 3) / 7 - 1 != 0
       - run: echo "Test 13 failed" && exit 1
-        if: !((1 + 1 == 2) && github.event_name == 'push')
+        if: ${{ !((1 + 1 == 2) && github.event_name == 'push') }}
       - run: echo "Test 14 failed" && exit 1
-        if: !success()
+        if: ${{ !success() }}
       - run: echo "Passed tests"
         if: ${{ steps.Random_Step-Name.conclusion == 'success' }}

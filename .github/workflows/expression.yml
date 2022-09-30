@@ -47,7 +47,7 @@ jobs:
           myString: Mona the Octocat
           myStringInBraces: ${{ 'It''s open source!' }}
       - run: echo "Test 12 failed" && exit 1
-        if: (1 + 2 * 3) / 7 - 1 != 0
+        if: ${{ format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat') !=  'Hello Mona the Octocat' }}
       - run: echo "Test 13 failed" && exit 1
         if: ${{ ((3 > 2) && github.event_name == 'push') == false }}
       - run: echo "Test 14 failed" && exit 1

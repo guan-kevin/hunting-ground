@@ -44,7 +44,6 @@ jobs:
           echo "${{ env.myBoolean }} vs $myBoolean"
           echo "${{ env.myIntegerNumber }} vs $myIntegerNumber"
           echo "${{ env.myFloatNumber }} vs $myFloatNumber"
-          echo "${{ env.myHexNumber }} vs $myHexNumber"
           echo "${{ env.myExponentialNumber }} vs $myExponentialNumber"
           echo "${{ env.myString }} vs $myString"
           echo "${{ env.myStringInBraces }} vs $myStringInBraces"

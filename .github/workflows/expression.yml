@@ -49,7 +49,7 @@ jobs:
       - run: echo "Test 12 failed" && exit 1
         if: (1 + 2 * 3) / 7 - 1 != 0
       - run: echo "Test 13 failed" && exit 1
-        if: ${{ ((1 + 1 == 2) && github.event_name == 'push') == false }}
+        if: ${{ ((3 > 2) && github.event_name == 'push') == false }}
       - run: echo "Test 14 failed" && exit 1
         if: ${{ !success() }}
       - run: echo "Passed tests"

@@ -59,3 +59,6 @@ jobs:
           if [[ ${{ steps.Random_Step-Name1.conclusion }} == 'success' && ${{ steps.Random_Step-Name1.outcome }} == 'success' && ${{ steps.Random_Step-Name2.conclusion }} == 'success' && ${{ steps.Random_Step-Name2.outcome }} == 'failure' ]]; then exit 0; else echo "Test 15 failed" && exit 1; fi
       - run: echo "Passed tests"
         if: ${{ steps.Random_Step-Name1.outcome == 'success' && steps.Random_Step-Name2.outcome == 'failure' }}
+      - name: Python script
+        if: always()
+        run: python src/pitching_machine.py

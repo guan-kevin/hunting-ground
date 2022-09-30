@@ -27,7 +27,7 @@ jobs:
         if: ${{ !startsWith('Hello world', 'Hello') }}
       - run: echo "Test 10 failed" && exit 1
         if: ${{ !endsWith('Hello world', 'world') }}
-      - id: Random_Step-Name
+      - id: Random_Step-Name1
         run: |
           echo "${{ env.myNull }} vs $myNull"
           echo "${{ env.myBoolean }} vs $myBoolean"
@@ -52,5 +52,10 @@ jobs:
         if: ${{ ((3 > 2) && github.event_name == 'push') == false }}
       - run: echo "Test 14 failed" && exit 1
         if: ${{ !success() }}
+      - id: Random_Step-Name2
+        run: echo "Error OK!" && exit 1
+        continue-on-error: ${{ github.event.repository.owner.login == 'guan-kevin' }}
+      - run: |
+          if [[ ${{ steps.Random_Step-Name1.conclusion }} == 'success' && ${{ steps.Random_Step-Name1.outcome }} == 'success' && ${{ steps.Random_Step-Name2.conclusion }} == 'success' && ${{ steps.Random_Step-Name2.outcome }} == 'failure' ]]; then exit 0; else echo "Test 15 failed" && exit 1; fi
       - run: echo "Passed tests"
-        if: ${{ steps.Random_Step-Name.conclusion == 'success' }}
+        if: ${{ steps.Random_Step-Name1.conclusion == 'success' }}

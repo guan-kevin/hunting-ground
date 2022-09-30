@@ -1,0 +1,56 @@
+name: Run Expression Test
+on: [push, pull_request]
+
+jobs:
+  test-expression:
+    name: Test Expression
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "Test 1 failed" && exit 1
+        if: failure()
+      - run: echo "Test 2 failed" && exit 1
+        if: ${{ failure() }}
+      - run: echo "Test 3 failed" && exit 1
+        if: github.actor != guan-kevin
+      - run: echo "Test 4 failed" && exit 1
+        if: github.actor == dummy-username
+      - run: echo "Test 5 failed" && exit 1
+        if: ${{ github.actor != 'guan-kevin' }}
+      - run: echo "Test 6 failed" && exit 1
+        if: ${{ github.actor == 'dummy-username' }}
+      - run: echo "Test 7 failed" && exit 1
+        if: contains('Hello world', 'bye')
+      - run: echo "Test 8 failed" && exit 1
+        if: !contains('Hello world', 'world')
+      - run: echo "Test 9 failed" && exit 1
+        if: !startsWith('Hello world', 'Hello')
+      - run: echo "Test 10 failed" && exit 1
+        if: !endsWith('Hello world', 'world')
+      - id: Random_Step-Name
+        run: |
+          echo "${{ env.myNull }} vs $myNull"
+          echo "${{ env.myBoolean }} vs $myBoolean"
+          echo "${{ env.myIntegerNumber }} vs $myIntegerNumber"
+          echo "${{ env.myFloatNumber }} vs $myFloatNumber"
+          echo "${{ env.myHexNumber }} vs $myHexNumber"
+          echo "${{ env.myExponentialNumber }} vs $myExponentialNumber"
+          echo "${{ env.myString }} vs $myString"
+          echo "${{ env.myStringInBraces }} vs $myStringInBraces"
+        env:
+          myNull: ${{ null }}
+          myBoolean: ${{ false }}
+          myIntegerNumber: ${{ 711 }}
+          myFloatNumber: ${{ -9.2 }}
+          myHexNumber: ${{ 0xff }}
+          myExponentialNumber: ${{ -2.99e-2 }}
+          myString: Mona the Octocat
+          myStringInBraces: ${{ 'It''s open source!' }}
+      - run: echo "Test 12 failed" && exit 1
+        if: (1 + 2 * 3) / 7 - 1 != 0
+      - run: echo "Test 13 failed" && exit 1
+        if: !((1 + 1 == 2) && github.event_name == 'push')
+      - run: echo "Test 14 failed" && exit 1
+        if: !success()
+      - run: echo "Passed tests"
+        if: ${{ steps.Random_Step-Name.conclusion == 'success' }}

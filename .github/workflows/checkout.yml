@@ -10,9 +10,19 @@ jobs:
       - name: Checkout another directory
         uses: actions/checkout@v3
         with:
-          repository: BugSwarm/bugswarm
-          path: bugswarm
-      - name: List contents in direction
-        run: ls bugswarm
+          repository: guan-kevin/hunting-ground5.0
+          submodules: true
+          path: abc
+      - name: List contents in directory
+        run: ls abc
+      - name: List again
+        run: |
+          cd abc
+          git log -1
+      - name: One more time
+        run: |
+          cd abc/hunting-ground
+          ls
+          git log -1
       - name: Python command
         run: python src/pitching_machine.py

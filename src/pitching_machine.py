@@ -1,6 +1,6 @@
 # import requests
 
-# print(Buggy version 55)
+print(Buggy version 56)
 # print('Fixed version 55')
 
 # r = requests.get('https://google.com')

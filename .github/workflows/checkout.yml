@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Checkout another directory
-        uses: actions/checkout@v3
+        uses: actions/checkout@v1
         with:
           repository: guan-kevin/hunting-ground5.0
           submodules: true

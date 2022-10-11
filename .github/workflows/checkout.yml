@@ -13,6 +13,7 @@ jobs:
           repository: guan-kevin/hunting-ground5.0
           submodules: true
           path: abc
+          ref: main
       - name: List contents in directory
         run: ls abc
       - name: List again

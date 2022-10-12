@@ -30,8 +30,8 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: guan-kevin/hunting-ground5.0
-          path: 5.0
+          path: test1
       - name: Check version again
-        run: cd 5.0 && git log -1
+        run: cd test1 && git log -1
       - name: Python command
         run: python src/pitching_machine.py

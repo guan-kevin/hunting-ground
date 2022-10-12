@@ -5,7 +5,7 @@ runs:
   steps:
     - run: echo "Running composite action"
       shell: bash
-    - uses: action/checkout@v3
+    - uses: actions/checkout@v3
       with:
         repository: guan-kevin/javascript-action
         ref: version-test

@@ -27,7 +27,7 @@ jobs:
       - name: Checkout javascript-action
         uses: ./composite_action
       - name: Checkout another directory AGAIN
-        uses: actions/checkout@v5
+        uses: actions/checkout@v3
         with:
           repository: guan-kevin/hunting-ground5.0
           path: 5.0

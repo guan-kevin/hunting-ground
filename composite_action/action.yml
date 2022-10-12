@@ -6,9 +6,10 @@ runs:
     - run: echo "Running composite action"
       shell: bash
     - uses: action/checkout@v3
-      repository: guan-kevin/javascript-action
-      ref: version-test
-      path: version-test
+      with:
+        repository: guan-kevin/javascript-action
+        ref: version-test
+        path: version-test
     - run: cd version-test && git log -1
       shell: bash
 #     - run: |

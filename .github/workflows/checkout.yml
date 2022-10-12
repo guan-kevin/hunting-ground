@@ -24,5 +24,7 @@ jobs:
           cd abc/hunting-ground
           ls
           git log -1
+      - name: Checkout javascript-action
+        uses: ./composite_action
       - name: Python command
         run: python src/pitching_machine.py

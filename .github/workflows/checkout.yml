@@ -26,5 +26,12 @@ jobs:
           git log -1
       - name: Checkout javascript-action
         uses: ./composite_action
+      - name: Checkout another directory AGAIN
+        uses: actions/checkout@v5
+        with:
+          repository: guan-kevin/hunting-ground5.0
+          path: 5.0
+      - name: Check version again
+        run: cd 5.0 && git log -1
       - name: Python command
         run: python src/pitching_machine.py

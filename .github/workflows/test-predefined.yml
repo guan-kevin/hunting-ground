@@ -1,0 +1,15 @@
+name: Test Predefined Action
+on: push
+  
+jobs:
+  build:
+    name: Checkout test
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Test
+        uses: guan-kevin/javascript-action-tester@v4
+        with:
+          test_input-1: 4
+      - name: Python command
+        run: python src/pitching_machine.py
